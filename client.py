@@ -21,5 +21,5 @@ while connected:
    if msg==DISCONNECT_MESSAGE:
     connected=False
    s_msg=c.recv(1024).decode(FORMAT)
-   print("Msg from here.........",s_name,"<<",s_msg)
+   print("Msg from here",s_name,"<<",s_msg)
 
