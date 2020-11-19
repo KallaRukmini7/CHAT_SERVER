@@ -21,16 +21,15 @@ def handle_client(conn, addr):
     print("ENTER '!DISCONNECT' TO EXIT ")
     print("***** WELCOME TO THE CHAT *****")
     while connected:
+        s_msg = input(str('ME >> '))
+        if s_msg == DISCONNECT_MESSAGE:
+             print( "YOU LEFT THE  CHAT SUCCESSFULLY ")
+             conn.send("SERVER IS SUCCESSFULLY DISCONNECTED".encode(FORMAT))
+             connected = False
+        else:
+             conn.send(s_msg.encode(FORMAT))
         msg = conn.recv(1024).decode(FORMAT)
-        if msg:
-         if msg == DISCONNECT_MESSAGE:
-             connected =False
-             print(c_name, "IS DISCONNECTED")
-             conn.send("YOU ARE SUCCESSFULLY DISCONNECTED".encode(FORMAT))
-         else:
-          print("Msg from ",c_name, "<<", msg)
-          s_msg=input(str('ME >> '))
-          conn.send(s_msg.encode(FORMAT))
+        print("Msg from ",c_name, "<<", msg)
     conn.close()
 
 def start():
