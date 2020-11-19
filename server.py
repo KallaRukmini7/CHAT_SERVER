@@ -18,6 +18,7 @@ def handle_client(conn, addr):
     c_name = conn.recv(1024).decode(FORMAT)
     conn.send(s_name.encode(FORMAT))
     connected=True
+    print("ENTER '!DISCONNECT' TO EXIT ")
     print("***** WELCOME TO THE CHAT *****")
     while connected:
         msg = conn.recv(1024).decode(FORMAT)
@@ -28,7 +29,7 @@ def handle_client(conn, addr):
              conn.send("YOU ARE SUCCESSFULLY DISCONNECTED".encode(FORMAT))
          else:
           print("Msg from ",c_name, "<<", msg)
-          s_msg=input()
+          s_msg=input(str('ME >> '))
           conn.send(s_msg.encode(FORMAT))
     conn.close()
 
