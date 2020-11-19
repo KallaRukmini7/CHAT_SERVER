@@ -11,7 +11,7 @@ c.connect(ADDR)
 print("ENTER THE HOSTNAME: ")
 h_name=input()
 c.send(h_name.encode(FORMAT))
-print("ENTER '!DISSCONNECT' TO EXIT ")
+print("ENTER '!DISCONNECT' TO EXIT ")
 s_name=c.recv(1024).decode(FORMAT)
 connected=True
 print("***** WELCOME TO THE CHAT *****")
