@@ -23,8 +23,8 @@ def handle_client(conn, addr):
         msg = conn.recv(1024).decode(FORMAT)
         if msg:
          if msg == DISCONNECT_MESSAGE:
-             connected=False
-             print(c_name ,"<<",msg)
+             connected =False
+             print(c_name, "IS DISCONNECTED")
              conn.send("YOU ARE SUCCESSFULLY DISCONNECTED".encode(FORMAT))
          else:
           print("Msg from ",c_name, "<<", msg)

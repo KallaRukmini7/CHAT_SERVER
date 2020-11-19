@@ -18,8 +18,12 @@ print("***** WELCOME TO THE CHAT *****")
 while connected:
    msg = input()
    c.send(msg.encode(FORMAT))
-   if msg==DISCONNECT_MESSAGE:
-    connected=False
+   if msg == DISCONNECT_MESSAGE:
+      connected = False
    s_msg=c.recv(1024).decode(FORMAT)
-   print("Msg from here",s_name,"<<",s_msg)
+   if s_msg == DISCONNECT_MESSAGE:
+      connected = False
+      print("CLIENT LEFT THE CHAT SUCCESSFULLY")
+   else:
+      print("Msg from here",s_name,"<<",s_msg)
 
